@@ -17,6 +17,10 @@ CREATE TABLE lost (
 	sizes TEXT,
 	info TEXT,
 	location TEXT NOT NULL
+	status SET (
+	'lost'
+	'claimed'
+	)
 );
 CREATE TABLE found1 (
 	id int UNIQUE AUTO_INCREMENT,
@@ -31,6 +35,10 @@ CREATE TABLE found1 (
 	sizes TEXT,
 	info TEXT,
 	location TEXT NOT NULL
+	status SET (
+	'found'
+	'claimed'
+	)
 );
 CREATE TABLE users (
 	id int UNIQUE AUTO_INCREMENT PRIMARY KEY,

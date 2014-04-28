@@ -3,7 +3,7 @@
 		<nav class="top-bar" data-topbar>
 			<ul class="title-area">
 				<li class="title-area">
-					<h1><a href="index.php">Limbo</a></h1>
+					<h2><a href="index.php">Limbo</a></h2>
 				</li>
 			</ul>
 			<section class="top-bar-section">

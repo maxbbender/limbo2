@@ -5,7 +5,7 @@
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$query = 
 			"INSERT INTO lost 
-			(fname, lname, email, phone, name, color, make, model, sizes, info, location) 
+			(fname, lname, email, phone, name, color, make, model, sizes, info, location,status) 
 			VALUES
 			('" . 
 			mysql_real_escape_string($_POST['fname']) . "','"  . 
@@ -18,7 +18,8 @@
 			mysql_real_escape_string($_POST['model']) . "','"  . 
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
-			mysql_real_escape_string($_POST['location']) . "')";
+			mysql_real_escape_string($_POST['location']) . "', 
+			'lost')"; //status
 			$results = mysqli_query($dbc, $query);
 			echo 'Successfully Submitted, Thank You';
 			header("refresh:3;url=index.php");
@@ -45,7 +46,8 @@
 			mysql_real_escape_string($_POST['model']) . "','"  . 
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
-			mysql_real_escape_string($_POST['location']) . "')";
+			mysql_real_escape_string($_POST['location']) . "'
+			,'found')"; //status
 			$results = mysqli_query($dbc, $query);
 			check_results($results);
 			//return $mysqli_insert_id($dbc);
@@ -56,7 +58,7 @@
 	}
 	function shortFound(){
 		global $dbc;
-		$query = 'SELECT id, name, color, location FROM found1 ORDER BY id DESC LIMIT 5';
+		$query = 'SELECT id, name, color, location, status FROM found1 ORDER BY id DESC LIMIT 5';
 		$results = mysqli_query($dbc, $query);
 		check_results($results);
 		if($results){
@@ -84,11 +86,11 @@
 	}
 	function shortLost(){
 		global $dbc;
-		$query = 'SELECT id, name, color, location FROM lost ORDER BY id DESC LIMIT 5';
+		$query = 'SELECT id, name, color, location, status FROM lost ORDER BY id DESC LIMIT 5';
 		$results = mysqli_query($dbc, $query);
 		check_results($results);
 		if($results){
-			echo '<table style="text-align:center" id="shortLost" width="400px">';
+			echo '<table style="text-align:center" id="shortLost" width="100%">';
 			echo '<tr>';
 			echo '<th>ID</th><th>Item Name</th><th>Color</th><th>Location</th>';
 			echo '</tr>';
@@ -109,6 +111,82 @@
 			}
 		}
 		mysqli_free_result($results);
+	}
+	function shortLostPanels(){
+		global $dbc;
+		$query = 'SELECT id, name, color, location, status FROM lost ORDER BY id DESC LIMIT 5';
+		$results = mysqli_query($dbc, $query);
+		check_results($results);
+		if ($results){
+			while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)){
+				if ($row['status'] == 'lost'){
+					$alertDiv = '
+						<div data-alert class="alert-box warning">
+							This item is still lost/found!
+						</div>
+					';
+				}else{
+					$alertDiv = '
+						<div data-alert class="alert-box success">
+							This item has been claimed!
+						</div>
+					';
+				}
+				echo '<div class="panel callout">
+					<table style="text-center">
+						<tr>
+							<td><a class="button" href="item.php?id=' . $row['id'] . '&type=lost">Item ID: ' . $row['id'] . '</a></td>
+						</tr>
+						<tr>
+							<td>Item Name:</td><td> ' .$row['name'] . '</td>
+						</tr>
+						<tr>
+							<td>Location:</td><td> ' .$row['location'] . '</td>
+						</tr>
+					</table>
+					' . $alertDiv . '
+					</div>
+				';
+			}
+		}
+	}
+	function shortFoundPanels(){
+		global $dbc;
+		$query = 'SELECT id, name, color, location, status FROM found1 ORDER BY id DESC LIMIT 5';
+		$results = mysqli_query($dbc, $query);
+		check_results($results);
+		if ($results){
+			while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)){
+				if ($row['status'] == 'lost'){
+					$alertDiv = '
+						<div data-alert class="alert-box warning">
+							This item is still lost/found!
+						</div>
+					';
+				}else{
+					$alertDiv = '
+						<div data-alert class="alert-box success">
+							This item has been claimed!
+						</div>
+					';
+				}
+				echo '<div class="panel callout">
+					<table style="text-center">
+						<tr>
+							<td><a class="button" href="item.php?id=' . $row['id'] . '&type=found1">Item ID: ' . $row['id'] . '</a></td>
+						</tr>
+						<tr>
+							<td>Item Name:</td><td> ' .$row['name'] . '</td>
+						</tr>
+						<tr>
+							<td>Location:</td><td> ' .$row['location'] . '</td>
+						</tr>
+					</table>
+					' . $alertDiv . '
+					</div>
+				';
+			}
+		}
 	}
 	function longLost(){
 		global $dbc;

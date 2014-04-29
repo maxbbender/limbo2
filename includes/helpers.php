@@ -20,7 +20,7 @@
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
 			mysql_real_escape_string($_POST['location']) . "', 
-			'lost','" //status
+			'lost','" . //status
 			mysql_real_escape_string($_POST['date']) . "','" . 
 			date("Y/m/d") "')"; 
 			//QUERY THE SERVER

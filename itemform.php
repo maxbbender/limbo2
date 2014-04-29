@@ -124,17 +124,19 @@
 							</label>
 						</div>
 					</div>
-					<div class="row>
-						<div class="large-12 columns>
+					<div class="row">
+						<div class="large-12 columns">
 							<label>Date Found/Lost
 								<input type="date" name="date">
 							</label>
-					<div class="row>
-						<div class="large-12 columns>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
 							<lable>More Information
 								<textarea name="info" placeholder="More Information"></textarea>
 							</label>
 						</div>
+						<input type="submit" class="button rounded center" value="Submit">
 					</div>
 				</fieldset>
 			</form>

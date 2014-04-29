@@ -18,7 +18,7 @@ CREATE TABLE lost (
 	info TEXT,
 	location TEXT NOT NULL,
 	status SET (
-	'lost'
+	'lost',
 	'claimed'
 	),
 	dateLost DATE,
@@ -36,11 +36,8 @@ CREATE TABLE found1 (
 	model TEXT,
 	sizes TEXT,
 	info TEXT,
-	location TEXT NOT NULL
-	status SET (
-	'found'
-	'claimed'
-	)
+	location TEXT NOT NULL,
+	status SET ('found','claimed'), 
 	dateFound DATE,
 	dateSubmitted DATE
 );

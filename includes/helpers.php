@@ -21,8 +21,8 @@
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
 			mysql_real_escape_string($_POST['location']) . "', 
 			'lost','" . //status
-			mysql_real_escape_string($_POST['date']) . "','" . 
-			date('Y/m/d') "')"; 
+			mysql_real_escape_string($_POST['date']) . "'," . 
+			date('Y/m/d') . ")"; 
 			//QUERY THE SERVER
 			$results = mysqli_query($dbc, $query);
 			echo 'Successfully Submitted, Thank You';

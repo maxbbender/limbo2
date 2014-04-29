@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>Found Something</title>
+		<?php require 'includes/htmllinks.php'; ?>
 	</head>
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>You Found Something!?</h1>
 				<?php include 'includes/mainNav.php'; session_start(); ?>
 			</header>
 			<div id="main">

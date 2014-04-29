@@ -3,10 +3,12 @@
 	<head>
 		<title>Item</title>
 		<?php 
+		
 			require 'includes/connect_db.php';
 			require 'includes/helpers.php';
 			session_start();
 		?>
+		<?php require 'includes/htmllinks.php'; ?>
 	</head>
 	<body>
 		<div id="wrapper">

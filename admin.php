@@ -5,12 +5,12 @@
 			session_start();
 			require 'includes/helpers.php';
 		?>
+		<?php require 'includes/htmllinks.php'; ?>
 		<title>Admin Page</title>
 	</head>
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>Admin Page</h1>
 				<?php include 'includes/mainNav.php'; ?>
 			</header>
 			<div id="main">

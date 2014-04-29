@@ -18,23 +18,30 @@
 			}
 		}
 	?>
+		<?php require 'includes/htmllinks.php'; ?>
 		<title>Admin Login</title>
 	</head>
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>Admin Login</h1>
 				<?php include 'includes/mainNav.php'; ?>
 			</header>
-			<div id="main">
 				<form id="login" action="admin_login.php" method="POST">
-					<table border="0px">
-						<tr><td>Username:</td><td><input type="text" name="username"></td></tr>
-						<tr><td>Password:</td><td><input type="password" name="password"></td></tr>
-						<tr><td><input type="submit"></td></tr>
-					</table>
+					<div class="row">
+						<div class="large-4 columns center">
+							<label>Username:
+								<input type="text" name="username" placeholder="username">
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-4 columns center">
+							<label>Password:
+								<input type="password" name="password">
+							</label>
+						</div>
+					</div>
 				</form>
-			</div>
 		</div>
 	</body>
 </html>

@@ -102,9 +102,9 @@
 							</label>
 						</div>
 						<div class="large-4 columns">
-							<label>Location
-								' . include 'includes/location.php' . '
-							</label>
+							<label>Location';
+						include 'includes/location.php';
+						echo '</label>
 						</div>
 					</div>
 					<div class="row">
@@ -132,13 +132,16 @@
 					<div class="row>
 						<div class="large-12 columns>
 							<lable>More Information
-								<textarea name="info" placeholder="More Information">
+								<textarea name="info" placeholder="More Information"></textarea>
 							</label>
 						</div>
 					</div>
 				</fieldset>
 			</form>
 		';
+	}else{
+		echo '<span style="color:red">There was an error. This form can only be accessed by the found and lost pages</span>';
+	}
 	function findType(){
 		if ($_SERVER['PHP_SELF'] == '/limbo2/lost.php'){
 			$type = 'submitlost.php';

@@ -16,18 +16,20 @@ CREATE TABLE lost (
 	model TEXT,
 	sizes TEXT,
 	info TEXT,
-	location TEXT NOT NULL
+	location TEXT NOT NULL,
 	status SET (
 	'lost'
 	'claimed'
-	)
+	),
+	dateLost DATE,
+	dateSubmitted DATE
 );
 CREATE TABLE found1 (
 	id int UNIQUE AUTO_INCREMENT,
 	fname TEXT NOT NULL,
 	lname TEXT NOT NULL,
-	email TEXT,
-	phone TEXT ,
+	email TEXT NOT NULL,
+	phone TEXT NOT NULL,
 	name TEXT,
 	color TEXT,
 	make TEXT,
@@ -39,6 +41,8 @@ CREATE TABLE found1 (
 	'found'
 	'claimed'
 	)
+	dateFound DATE,
+	dateSubmitted DATE
 );
 CREATE TABLE users (
 	id int UNIQUE AUTO_INCREMENT PRIMARY KEY,

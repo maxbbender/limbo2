@@ -1,5 +1,5 @@
 <?php
-	echo 'Where was/is it: <select required name="location">';
+	echo '<select required name="location">';
 	echo '<option value="Byrne House">Byrne House</option>';
 	echo '<option value="Champagnat Hall">Champagnat Hall</option>';
 	echo '<option value="Cornell Boathouse">Cornell Boathouse</option>';

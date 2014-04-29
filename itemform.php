@@ -31,7 +31,7 @@
 	
 	$submittype = findType();
 	
-	if ($submittype != NULL){
+	/*if ($submittype != NULL){
 		echo '<form action="' . $submittype . '" method="POST" enctype="multipart/form-data">';
 		echo '<h3>Contact Information</h3>';
 		echo '<table>';
@@ -57,10 +57,92 @@
 	}else{
 		echo '<span style="color:red">There was an error. This form can only be accessed by the found and lost pages</span>';
 	}
+	*/
+	if ($submittype != NULL){
+		echo '
+			<form action="'.$submittype.'" method="post">
+				<fieldset>
+					<legend>Contact Information</legend>
+					<div class="row">
+						<div class="large-6 columns">
+							<label>First Name
+								<input type="text" name="fname" placeholder="First Name">
+							</label>
+						</div>
+						<div class="large-6 columns">
+							<label>Last Name
+								<input type="text" name="lname" placeholder="Last Name">
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-6 columns">
+							<label>Email
+								<input type="email" name="email" placeholder="jsmith@example.com">
+							</label>
+						</div>
+						<div class="large-6 columns">
+							<label>Phone Number
+								<input type="text" name="phone" placeholder="Phone Number">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Item Information</legend>
+					<div class="row">
+						<div class="large-4 columns">
+							<label>Item Name
+								<input type="text" name="name" placeholder="Item Name">
+							</label>
+						</div>
+						<div class="large-4 columns">
+							<label>Item Color
+								<input type="color" name="color" placeholder="#FFFFF">
+							</label>
+						</div>
+						<div class="large-4 columns">
+							<label>Location
+								' . include 'includes/location.php' . '
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-4 columns">
+							<label>Make
+								<input type="text" name="make" placeholder="Make">
+							</label>
+						</div>
+						<div class="large-4 columns">
+							<label>Model
+								<input type="text" name="model" placeholder="Model">
+							</label>
+						</div>
+						<div class="large-4 columns">
+							<label>Size
+								<input type="text" name="size" placeholder="Size">
+							</label>
+						</div>
+					</div>
+					<div class="row>
+						<div class="large-12 columns>
+							<label>Date Found/Lost
+								<input type="date" name="date">
+							</label>
+					<div class="row>
+						<div class="large-12 columns>
+							<lable>More Information
+								<textarea name="info" placeholder="More Information">
+							</label>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		';
 	function findType(){
-		if ($_SERVER['PHP_SELF'] == '/limbo/lost.php'){
+		if ($_SERVER['PHP_SELF'] == '/limbo2/lost.php'){
 			$type = 'submitlost.php';
-		}else if ($_SERVER['PHP_SELF'] == '/limbo/found.php'){
+		}else if ($_SERVER['PHP_SELF'] == '/limbo2/found.php'){
 			$type = 'submitfound.php';
 		}else{
 			$type = NULL;

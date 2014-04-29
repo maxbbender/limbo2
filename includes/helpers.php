@@ -3,9 +3,10 @@
 	function submitLost(){
 		global $dbc;
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+			//PREPARE THE QUERY
 			$query = 
 			"INSERT INTO lost 
-			(fname, lname, email, phone, name, color, make, model, sizes, info, location,status) 
+			(fname, lname, email, phone, name, color, make, model, sizes, info, location, status, dateLost, dateSubmitted) 
 			VALUES
 			('" . 
 			mysql_real_escape_string($_POST['fname']) . "','"  . 
@@ -19,7 +20,10 @@
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
 			mysql_real_escape_string($_POST['location']) . "', 
-			'lost')"; //status
+			'lost','" //status
+			mysql_real_escape_string($_POST['date']) . "','" . 
+			date("Y/m/d") "')"; 
+			//QUERY THE SERVER
 			$results = mysqli_query($dbc, $query);
 			echo 'Successfully Submitted, Thank You';
 			header("refresh:3;url=index.php");
@@ -33,7 +37,7 @@
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$query = 
 			"INSERT INTO found1 
-			(fname, lname, email, phone, name, color, make, model, sizes, info, location) 
+			(fname, lname, email, phone, name, color, make, model, sizes, info, location, dateFound, dateSubmitted) 
 			VALUES
 			('" . 
 			mysql_real_escape_string($_POST['fname']) . "','"  . 
@@ -47,7 +51,9 @@
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
 			mysql_real_escape_string($_POST['location']) . "'
-			,'found')"; //status
+			'found','" //status
+			mysql_real_escape_string($_POST['date']) . "','" . 
+			date("Y/m/d") "')"; 
 			$results = mysqli_query($dbc, $query);
 			check_results($results);
 			//return $mysqli_insert_id($dbc);

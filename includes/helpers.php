@@ -51,9 +51,9 @@
 			mysql_real_escape_string($_POST['size'])  . "','"   . 
 			mysql_real_escape_string($_POST['info'])  . "','"   . 
 			mysql_real_escape_string($_POST['location']) . "'
-			'found','" //status
-			mysql_real_escape_string($_POST['date']) . "','" . 
-			date("Y/m/d") "')"; 
+			'found','" . //status
+			mysql_real_escape_string($_POST['date']) . "'," . 
+			date('Y/m/d') . ")"; 
 			$results = mysqli_query($dbc, $query);
 			check_results($results);
 			//return $mysqli_insert_id($dbc);
